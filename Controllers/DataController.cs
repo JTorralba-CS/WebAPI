@@ -79,7 +79,6 @@ namespace WebAPI.Controllers
     public class Record
     {
         public int ID { get; set; }
-
         [MinLength(1)]
         public string First { get; set; }
         [MinLength(1)]
