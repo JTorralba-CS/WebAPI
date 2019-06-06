@@ -27,18 +27,25 @@ namespace WebAPI.Controllers
         //    };
         //}
 
-        // GET api/<controller>/NNNNNN
+        // GET api/<controller>/NNNNNN  - (Query Parameter)
         //[HttpGet("{ID:int=123456}")]
         //public string Get(int ID, string First, string Last, string Phone)
         //{
         //    return $"ID = {ID}, First = {First}, Last = {Last}, Phone = {Phone}";
         //}
 
-        // GET api/<controller>/NNNNNN
+        // GET api/<controller>/NNNNNN - (Query Parameter & IActionResult)
+        //[HttpGet("{ID:int=000000}")]
+        //public IActionResult Get(int ID, string First, string Last, string Phone)
+        //{
+        //    return Ok(new Record { ID = ID, First = First, Last = Last, Phone = Phone });
+        //}
+
+        // GET api/<controller>/NNNNNN - (Record Parameter & IActionResult)
         [HttpGet("{ID:int=000000}")]
-        public IActionResult Get(int ID, string First, string Last, string Phone)
+        public IActionResult Get(int ID, Record Data)
         {
-            return Ok(new Record { ID = ID, First = First, Last = Last, Phone = Phone });
+            return Ok(new Record { ID = ID, First = Data.First, Last = Data.Last, Phone = Data.Phone });
         }
 
         // POST api/<controller>
@@ -51,7 +58,7 @@ namespace WebAPI.Controllers
         //    }
         //}
 
-        // POST api/<controller>
+        // POST api/<controller> - (IActionResult)
         [HttpPost]
         public IActionResult Post([FromBody] Record Data)
         {
@@ -59,6 +66,8 @@ namespace WebAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            // Save record to database.
 
             return CreatedAtAction("Get", new { ID = Data.ID }, Data);
         }
