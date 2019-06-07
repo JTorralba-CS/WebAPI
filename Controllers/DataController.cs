@@ -41,8 +41,16 @@ namespace WebAPI.Controllers
         //    return Ok(new Record { ID = ID, First = First, Last = Last, Phone = Phone });
         //}
 
+        //// GET api/<controller>/NNNNNN - (Record Parameter & IActionResult)
+        //[HttpGet("{ID:int=000000}")]
+        //public IActionResult Get(int ID, Record Data)
+        //{
+        //    return Ok(new Record { ID = ID, First = Data.First, Last = Data.Last, Phone = Data.Phone });
+        //}
+
         // GET api/<controller>/NNNNNN - (Record Parameter & IActionResult)
         [HttpGet("{ID:int=000000}")]
+        [Produces("application/xml")]
         public IActionResult Get(int ID, Record Data)
         {
             return Ok(new Record { ID = ID, First = Data.First, Last = Data.Last, Phone = Data.Phone });
@@ -88,11 +96,11 @@ namespace WebAPI.Controllers
     public class Record
     {
         public int ID { get; set; }
-        [MinLength(1)]
+        [MinLength(5)]
         public string First { get; set; }
-        [MinLength(1)]
+        [MinLength(5)]
         public string Last { get; set; }
-        [MinLength(10)]
+        [MinLength(7)]
         public string Phone { get; set; }
     }
 
