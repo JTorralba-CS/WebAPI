@@ -7,7 +7,7 @@ namespace WebAPI.Models
 {
     public class Contact
     {
-        public int ID { get; set; }
+        public Int64 ID { get; set; }
         public string First { get; set; }
         public string Last { get; set; }
         public string Phone { get; set; }

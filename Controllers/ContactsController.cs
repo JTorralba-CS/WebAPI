@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
 
         // GET: api/Contacts/NNNNNN
         [HttpGet("{id}")]
-        public async Task<ActionResult<Contact>> GetContact(int id)
+        public async Task<ActionResult<Contact>> GetContact(Int64 id)
         {
             var contact = await _context.Contacts.FindAsync(id);
 
@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
 
         // PUT: api/Contacts/NNNNNN
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutContact(int id, Contact contact)
+        public async Task<IActionResult> PutContact(Int64 id, Contact contact)
         {
             if (id != contact.ID)
             {
@@ -83,7 +83,7 @@ namespace WebAPI.Controllers
 
         // DELETE: api/Contacts/NNNNNN
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Contact>> DeleteContact(int id)
+        public async Task<ActionResult<Contact>> DeleteContact(Int64 id)
         {
             var contact = await _context.Contacts.FindAsync(id);
             if (contact == null)
@@ -97,7 +97,7 @@ namespace WebAPI.Controllers
             return contact;
         }
 
-        private bool ContactExists(int id)
+        private bool ContactExists(Int64 id)
         {
             return _context.Contacts.Any(e => e.ID == id);
         }
